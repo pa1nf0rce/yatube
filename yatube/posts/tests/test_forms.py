@@ -186,7 +186,7 @@ class PostFormTests(TestCase):
         """
         Неавторизованный полльзователь не может оставить комментарий.
         """
-        comments_count  = Comment.objects.count()
+        comments_count = Comment.objects.count()
         post = Post.objects.create(
             text='Тестовый пост для формы',
             author=self.user,

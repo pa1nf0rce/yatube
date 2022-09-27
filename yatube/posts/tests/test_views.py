@@ -107,7 +107,6 @@ class PostViewsTest(TestCase):
         response = self.authorized_client.get(reverse('posts:index'))
         self.check_post_information(response.context['page_obj'][0])
 
-
     def test_group_posts_uses_correct_context(self):
         """Шаблон group_list сформирован с правильным контекстом."""
         response = self.authorized_client.get(
@@ -182,6 +181,7 @@ class PostViewsTest(TestCase):
             reverse('posts:index')).content
         self.assertNotEqual(content, content_after_cache_cleared)
 
+
 class PostPaginatorTest(TestCase):
     @classmethod
     def setUpClass(cls):
@@ -230,6 +230,7 @@ class PostPaginatorTest(TestCase):
                     len(response.context['page_obj']), count_posts
                 )
 
+
 class FollowTest(TestCase):
     @classmethod
     def setUpClass(cls):
@@ -244,6 +245,7 @@ class FollowTest(TestCase):
             text='Проверка подписки на автора',
             author=cls.author_post
         )
+
     def setUp(self):
         self.authorized_author = Client()
         self.authorized_author.force_login(self.author_post)
