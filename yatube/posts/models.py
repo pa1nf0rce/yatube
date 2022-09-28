@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-COUNT_SYMBHOLS_OUTPUT = 15
+COUNT_SYMBHOLS_OUTPUT: int = 15
 
 
 class Group(models.Model):
@@ -85,3 +85,11 @@ class Follow(models.Model):
         related_name='following',
         on_delete=models.CASCADE
     )
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'author'],
+                name='unique_follower'
+            )
+        ]
